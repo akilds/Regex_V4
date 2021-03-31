@@ -93,7 +93,7 @@ public class regex
   }
  }
 
- //USE CASE 5, 6, 7 - Validity Check for Password
+ //USE CASE 5, 6, 7, 8 - Validity Check for Password
  //PAssword User Input
  static String getPassword()
  {
@@ -107,7 +107,7 @@ public class regex
  static void passwordCheck()
  {
   String password = getPassword();
-  boolean passCheck = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}",password);
+  boolean passCheck = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,}",password);
   if(passCheck)
   {
    System.out.println("Valid Password");
