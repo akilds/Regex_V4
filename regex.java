@@ -41,7 +41,7 @@ public class regex
   }
  }
 
- //USE CASE 3 - Vailidity Check for Email
+ //USE CASE 3, 9 - Vailidity Check for Email
  //Email User Input
  static String getEmail()
  {
