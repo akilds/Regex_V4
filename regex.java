@@ -55,19 +55,42 @@ public class regex
  {
   String gmail = getEmail();
   boolean mailCheck = Pattern.matches("((^[a-z]{1,}((([-]|[.]|[+])[0-9]{1,})|[0-9]{1,}))|(^[a-z]{1,}))[@](([a-z]{2,}[.][a-z]{2,})|([a-z]{2,}[.][a-z]{2,}[.][a-z]{2,})|([0-1][.][a-z]{2,}))",gmail);
-  //"(^[a-z]{1,}[@][a-z]{1,}[.][a-z]{1,})|(^[a-z]{1})"
   if(mailCheck)
   {
-   System.out.println("Valid");
+   System.out.println("Valid Email");
   }
   else
   {
-   System.out.println("Invalid");
+   System.out.println("Invalid Email");
   }
  }
+
+ static String getMobileNo()
+ {
+  Scanner sc = new Scanner(System.in);
+  System.out.println("Enter MobileNo : ");
+  String mobileNo = sc.nextLine();
+  return mobileNo;
+ }
+
+ static void mobileNoCheck()
+ {
+  String mobileNo = getMobileNo();
+  boolean mobNoCheck = Pattern.matches("^[9][1] [6-9]{1}[0-9]{9}",mobileNo);
+  if(mobNoCheck)
+  {
+   System.out.println("Valid Mobile Number");
+  }
+  else
+  {
+   System.out.println("Invalid Mobile Number");
+  }
+ }
+
  public static void main(String[] args)
  {
   nameCheck();
   emailCheck();
+  mobileNoCheck();
  }
 }
