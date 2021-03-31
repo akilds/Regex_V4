@@ -39,8 +39,35 @@ public class regex
    System.out.println("Invalid Firstname/Lastname - Enter a name starting with Cap and has minimum 3 characters");
   }
  }
+
+ //USE CASE 3 - Vailidity Check for Email
+ //Email User Input
+ static String getEmail()
+ {
+  Scanner sc = new Scanner(System.in);
+  System.out.println("Enter Email : ");
+  String gmail = sc.nextLine();
+  return gmail;
+ }
+
+ //Check for Email
+ static void emailCheck()
+ {
+  String gmail = getEmail();
+  boolean mailCheck = Pattern.matches("((^[a-z]{1,}((([-]|[.]|[+])[0-9]{1,})|[0-9]{1,}))|(^[a-z]{1,}))[@](([a-z]{2,}[.][a-z]{2,})|([a-z]{2,}[.][a-z]{2,}[.][a-z]{2,})|([0-1][.][a-z]{2,}))",gmail);
+  //"(^[a-z]{1,}[@][a-z]{1,}[.][a-z]{1,})|(^[a-z]{1})"
+  if(mailCheck)
+  {
+   System.out.println("Valid");
+  }
+  else
+  {
+   System.out.println("Invalid");
+  }
+ }
  public static void main(String[] args)
  {
   nameCheck();
+  emailCheck();
  }
 }
