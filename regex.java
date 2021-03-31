@@ -37,6 +37,7 @@ public class regex
   else
   {
    System.out.println("Invalid Firstname/Lastname - Enter a name starting with Cap and has minimum 3 characters");
+   nameCheck();
   }
  }
 
@@ -62,6 +63,7 @@ public class regex
   else
   {
    System.out.println("Invalid Email");
+   emailCheck();
   }
  }
 
@@ -87,10 +89,11 @@ public class regex
   else
   {
    System.out.println("Invalid Mobile Number");
+   mobileNoCheck();
   }
  }
 
- //USE CASE 5 - Validity Check for Password
+ //USE CASE 5, 6 - Validity Check for Password
  //PAssword User Input
  static String getPassword()
  {
@@ -104,7 +107,7 @@ public class regex
  static void passwordCheck()
  {
   String password = getPassword();
-  boolean passCheck = Pattern.matches("^[a-z]{8,}",password);
+  boolean passCheck = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z]).{8,}",password);
   if(passCheck)
   {
    System.out.println("Valid Password");
@@ -112,14 +115,15 @@ public class regex
   else
   {
    System.out.println("Invalid Password");
+   passwordCheck();
   }
  }
 
  public static void main(String[] args)
  {
-  //nameCheck();
-  //emailCheck();
-  //mobileNoCheck();
+  nameCheck();
+  emailCheck();
+  mobileNoCheck();
   passwordCheck();
  }
 }
