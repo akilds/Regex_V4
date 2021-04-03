@@ -57,6 +57,13 @@ public class Regex
   return mailCheck;
  }
 
+ //Check for Parameterized Email 
+ static boolean mailCheck(String gmail)
+ {
+  boolean mailCheck = Pattern.matches("((^[a-z]{1,}((([-]|[.]|[+])[0-9]{1,})|[0-9]{1,}))|(^[a-z]{1,}))[@](([a-z]{2,}[.][a-z]{2,})|([a-z]{2,}[.][a-z]{2,}[.][a-z]{2,})|([0-1][.][a-z]{2,}))",gmail);
+  return mailCheck;
+ }
+
  //USE CASE 4 - Validity Check for Mobile Number
  //Moblie Number User Input
  static String getMobileNo()
