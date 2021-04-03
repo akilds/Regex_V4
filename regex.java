@@ -1,7 +1,7 @@
 import java.util.regex.Pattern;
 import java.util.*;
 
-public class regex
+public class Regex
 {
  // USE CASE 1 - Validity Check of  Firstname
  // Firstname User Input
@@ -11,6 +11,14 @@ public class regex
   System.out.println("Enter Firstname : ");
   String fname = sc.nextLine();
   return fname;
+ }
+ 
+ //Check for Firstname 
+ static boolean fnameCheck()
+ {
+  String fname = getFirstName();
+  boolean fnameCheck = Pattern.matches("^[A-Z][a-z]{2,}",fname);
+  return fnameCheck;
  }
 
  // USE CASE 2 - Validity Check of Lastname
@@ -23,22 +31,12 @@ public class regex
   return lname;
  }
 
- // Common Check for Firstname and Lastname
- static void nameCheck()
+ // Check for Lastname
+ static boolean lnameCheck()
  {
-  String fname = getFirstName();
-  String lname = getLastName();
-  boolean fnameCheck = Pattern.matches("^[A-Z][a-z]{2,}",fname);
-  boolean lnameCheck = Pattern.matches("^[A-Z][a-z]{2,}",lname);
-  if(fnameCheck && lnameCheck)
-  {
-   System.out.println("Correct");
-  }
-  else
-  {
-   System.out.println("Invalid Firstname/Lastname - Enter a name starting with Cap and has minimum 3 characters");
-   nameCheck();
-  }
+	 String lname = getLastName();
+	 boolean lnameCheck = Pattern.matches("^[A-Z][a-z]{2,}",lname);
+	 return lnameCheck; 
  }
 
  //USE CASE 3, 9 - Vailidity Check for Email
@@ -52,19 +50,11 @@ public class regex
  }
 
  //Check for Email
- static void emailCheck()
+ static boolean emailCheck()
  {
   String gmail = getEmail();
   boolean mailCheck = Pattern.matches("((^[a-z]{1,}((([-]|[.]|[+])[0-9]{1,})|[0-9]{1,}))|(^[a-z]{1,}))[@](([a-z]{2,}[.][a-z]{2,})|([a-z]{2,}[.][a-z]{2,}[.][a-z]{2,})|([0-1][.][a-z]{2,}))",gmail);
-  if(mailCheck)
-  {
-   System.out.println("Valid Email");
-  }
-  else
-  {
-   System.out.println("Invalid Email");
-   emailCheck();
-  }
+  return mailCheck;
  }
 
  //USE CASE 4 - Validity Check for Mobile Number
@@ -78,19 +68,11 @@ public class regex
  }
 
  //Check for Mobile Number
- static void mobileNoCheck()
+ static boolean mobileNoCheck()
  {
   String mobileNo = getMobileNo();
   boolean mobNoCheck = Pattern.matches("^[9][1] [6-9]{1}[0-9]{9}",mobileNo);
-  if(mobNoCheck)
-  {
-   System.out.println("Valid Mobile Number");
-  }
-  else
-  {
-   System.out.println("Invalid Mobile Number");
-   mobileNoCheck();
-  }
+  return mobNoCheck;
  }
 
  //USE CASE 5, 6, 7, 8 - Validity Check for Password
@@ -104,26 +86,13 @@ public class regex
  }
 
  //Check for Password
- static void passwordCheck()
+ static boolean passwordCheck()
  {
   String password = getPassword();
   boolean passCheck = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,}",password);
-  if(passCheck)
-  {
-   System.out.println("Valid Password");
-  }
-  else
-  {
-   System.out.println("Invalid Password");
-   passwordCheck();
-  }
+  return passCheck;
  }
 
- public static void main(String[] args)
- {
-  nameCheck();
-  emailCheck();
-  mobileNoCheck();
-  passwordCheck();
- }
 }
+
+
