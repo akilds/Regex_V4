@@ -1,7 +1,16 @@
 import java.util.regex.Pattern;
 import java.util.*;
 
-public class Regex
+//Exception Class
+class UserRegistrationException extends Exception
+{
+	UserRegistrationException(String s)
+	{
+		super(s);
+	}
+}
+
+public class regex
 {
  // USE CASE 1 - Validity Check of  Firstname
  // Firstname User Input
@@ -98,6 +107,151 @@ public class Regex
   String password = getPassword();
   boolean passCheck = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,}",password);
   return passCheck;
+ }
+
+ //USE CASE 12 - Custom Exceptions
+ //Exception Check for Firstname
+ public String fnameCheck1() throws UserRegistrationException
+ {
+
+   String fname = getFirstName();
+   boolean fnameCheck1 = Pattern.matches("^[A-Z][a-z]{2,}",fname);
+   if(fnameCheck1)
+   {
+	   return "VALID";
+   }
+   else
+   {
+	   throw new UserRegistrationException("INVALID");
+   }
+ }
+
+ public String fnameExceptionCheck()
+ {
+	 try 
+	 {
+	  String s = fnameCheck1();
+	  return s;
+	 }
+	 catch(Exception e)
+	 {
+		 return "INVALID";
+	 }
+ }
+
+ //Exception Check for Lastname
+ public String lnameCheck1() throws UserRegistrationException
+ {
+
+   String lname = getLastName();
+   boolean lnameCheck1 = Pattern.matches("^[A-Z][a-z]{2,}",lname);
+   if(lnameCheck1)
+   {
+	   return "VALID";
+   }
+   else
+   {
+	   throw new UserRegistrationException("INVALID");
+   }
+ }
+
+ public String lnameExceptionCheck()
+ {
+	 try
+	 {
+	  String s = lnameCheck1();
+	  return s;
+	 }
+	 catch(Exception e)
+	 {
+		 return "INVALID";
+	 }
+ }
+
+ //Exception Check for Email
+ public String emailCheck1() throws UserRegistrationException
+ {
+
+   String email = getEmail();
+   boolean mailCheck = Pattern.matches("^[A-Z][a-z]{2,}",email);
+   if(mailCheck)
+   {
+	   return "VALID";
+   }
+   else
+   {
+	   throw new UserRegistrationException("INVALID");
+   }
+ }
+
+ public String emailExceptionCheck()
+ {
+	 try
+	 {
+	  String s = emailCheck1();
+	  return s;
+	 }
+	 catch(Exception e)
+	 {
+		 return "INVALID";
+	 }
+ }
+
+ //Exception Check for MobileNo
+ public String mobileNoCheck1() throws UserRegistrationException
+ {
+   String mobileNo = getMobileNo();
+   boolean mobNoCheck = Pattern.matches("^[A-Z][a-z]{2,}",mobileNo);
+   if(mobNoCheck)
+   {
+	   return "VALID";
+   }
+   else
+   {
+	   throw new UserRegistrationException("INVALID");
+   }
+ }
+
+ public String mobileNoExceptionCheck()
+ {
+	 try
+	 {
+	  String s = mobileNoCheck1();
+	  return s;
+	 }
+	 catch(Exception e)
+	 {
+		 return "INVALID";
+	 }
+ }
+
+ //Exception Check for Password
+ public String passwordCheck1() throws UserRegistrationException
+ {
+
+   String password = getPassword();
+   boolean passwordCheck = Pattern.matches("^[A-Z][a-z]{2,}",password);
+   if(passwordCheck)
+   {
+	   return "VALID";
+   }
+   else
+   {
+	   throw new UserRegistrationException("INVALID");
+   }
+ }
+
+ public String passwordExceptionCheck()
+ {
+	 try
+	 {
+	  String s = passwordCheck1();
+	  return s;
+	 }
+	 catch(Exception e)
+	 {
+		 return "INVALID";
+	 }
  }
 
 }
