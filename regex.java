@@ -10,6 +10,13 @@ class UserRegistrationException extends Exception
 	}
 }
 
+//Interface for Lambda Function
+@FunctionalInterface
+interface UserRegistration1
+{
+	public boolean getAndCheck(String value);
+}
+
 public class regex
 {
  // USE CASE 1 - Validity Check of  Firstname
@@ -21,8 +28,8 @@ public class regex
   String fname = sc.nextLine();
   return fname;
  }
- 
- //Check for Firstname 
+
+ //Check for Firstname
  static boolean fnameCheck()
  {
   String fname = getFirstName();
@@ -45,7 +52,7 @@ public class regex
  {
 	 String lname = getLastName();
 	 boolean lnameCheck = Pattern.matches("^[A-Z][a-z]{2,}",lname);
-	 return lnameCheck; 
+	 return lnameCheck;
  }
 
  //USE CASE 3, 9 - Vailidity Check for Email
@@ -66,7 +73,7 @@ public class regex
   return mailCheck;
  }
 
- //Check for Parameterized Email 
+ //Check for Parameterized Email
  static boolean mailCheck(String gmail)
  {
   boolean mailCheck = Pattern.matches("((^[a-z]{1,}((([-]|[.]|[+])[0-9]{1,})|[0-9]{1,}))|(^[a-z]{1,}))[@](([a-z]{2,}[.][a-z]{2,})|([a-z]{2,}[.][a-z]{2,}[.][a-z]{2,})|([0-1][.][a-z]{2,}))",gmail);
@@ -128,7 +135,7 @@ public class regex
 
  public String fnameExceptionCheck()
  {
-	 try 
+	 try
 	 {
 	  String s = fnameCheck1();
 	  return s;
@@ -254,6 +261,61 @@ public class regex
 	 }
  }
 
+ //USE CASE 13 - Lambda Function
+ public static void main(String[] args)
+ {
+    //Lambda Function for Firstname
+	 UserRegistration1 fname1 = value -> {
+		 boolean fnameCheck = Pattern.matches("^[A-Z][a-z]{2,}",value);
+		 return fnameCheck;
+	 };
+
+    //Lambda Function for Lastname
+	 UserRegistration1 lname1 = value -> {
+		 boolean lnameCheck = Pattern.matches("^[A-Z][a-z]{2,}",value);
+		 return lnameCheck;
+	 };
+
+    //Lambda Function for Email
+	 UserRegistration1 email1 = value -> {
+		 boolean mailCheck = Pattern.matches("((^[a-z]{1,}((([-]|[.]|[+])[0-9]{1,})|[0-9]{1,}))|(^[a-z]{1,}))[@](([a-z]{2,}[.][a-z]{2,})|([a-z]{2,}[.][a-z]{2,}[.][a-z]{2,})|([0-1][.][a-z]{2,}))",value);
+		 return mailCheck;
+	 };
+
+    //Lambda Function for MobileNo
+	 UserRegistration1 mobileNo1 = value -> {
+		 boolean mobNoCheck = Pattern.matches("^[9][1] [6-9]{1}[0-9]{9}",value);
+		 return mobNoCheck;
+	 };
+
+    //Lambda Function for Password
+	 UserRegistration1 password1 = value -> {
+		 boolean passCheck = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,}",value);
+		  return passCheck;
+	 };
+
+    //Lambda Function Calls
+	 Scanner sc = new Scanner(System.in);
+	 System.out.println("Enter FirstName : ");
+	 String fname = sc.nextLine();
+	 System.out.println(fname1.getAndCheck(fname));
+
+	 System.out.println("Enter LastName : ");
+	 String lname = sc.nextLine();
+	 System.out.println(lname1.getAndCheck(lname));
+
+	 System.out.println("Enter Email : ");
+	 String email = sc.nextLine();
+	 System.out.println(email1.getAndCheck(email));
+
+	 System.out.println("Enter MobileNo : ");
+	 String mobileNo = sc.nextLine();
+	 System.out.println(mobileNo1.getAndCheck(mobileNo));
+
+	 System.out.println("Enter Password : ");
+	 String password = sc.nextLine();
+	 System.out.println(password1.getAndCheck(password));
+ }
 }
 
 
